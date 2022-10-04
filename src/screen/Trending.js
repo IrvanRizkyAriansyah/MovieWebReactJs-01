@@ -31,7 +31,7 @@ export default function Trending() {
 
   return (
     <div className="container">
-    <h1 style={{paddingBottom : '2rem'}}>Popular Movie</h1>
+    <h1>Popular Movie</h1>
     <div style={{display: 'grid', gridTemplateColumns: 'repeat(4, 15rem)', gap: '2rem', justifyContent: 'center'}}>
       { trend &&
         trend.map((res, index) => {

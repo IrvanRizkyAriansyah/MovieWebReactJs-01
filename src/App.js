@@ -10,11 +10,11 @@ import Trending from './screen/Trending'
 
 export default function App() {
   return (
-    <div>
+    <>
       <Navbar />
       <Poster />
       <Trending />
       <Movie />
-    </div>
+    </>
   );
 }

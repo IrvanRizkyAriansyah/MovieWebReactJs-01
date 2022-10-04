@@ -29,7 +29,7 @@ export default function Movie() {
 
   return (
     <div className="container">
-    <h1 style={{paddingBottom : '2rem'}}>All Movie</h1>
+    <h1>All Movie</h1>
     <div style={{display: 'grid', gridTemplateColumns: 'repeat(4, 15rem)', gap: '2rem', justifyContent: 'center'}}>
       {
         movie.map((res, index) => {
