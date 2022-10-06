@@ -6,7 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
-import Detail from './screen/Detail'
+import Detail from './screen/Detail';
+import Search from './screen/Search';
+import Movie from './screen/Movie'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,7 +16,10 @@ root.render(
     <BrowserRouter>
     <Routes>
     <Route path="/" element={<App />} />
-    <Route path="/Movie/:id" element={<Detail />} />
+    <Route path="/movie/" element={<Movie />} />
+    <Route path="/movie/:id" element={<Detail />} />
+    <Route path="/:id" element={<Detail />} />
+    <Route path="/search/:query" element={<Search />} />
     </Routes>
     </BrowserRouter>
   </React.StrictMode>

@@ -2,12 +2,22 @@ import '../App';
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import React from 'react';
-import { Card } from 'antd';
+import { Card, Button } from 'antd';
 import {useNavigate} from 'react-router-dom'
+import { Swiper, SwiperSlide } from "swiper/react";
+import {ArrowRightOutlined} from '@ant-design/icons'
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
+
+// import required modules
+import { FreeMode, Pagination } from "swiper";
+
 
 export default function Trending() {
   const [trend, setTrend] = useState([])
-  const { Meta } = Card;
   const navigate = useNavigate()
   
   const loadTrend = async () => {
@@ -31,23 +41,35 @@ export default function Trending() {
 
   return (
     <div className="container">
-    <h1>Popular Movie</h1>
-    <div style={{display: 'grid', gridTemplateColumns: 'repeat(4, 15rem)', gap: '2rem', justifyContent: 'center'}}>
+    <div style={{display:'flex', justifyContent: 'space-between', paddingBottom: '2rem'}}>
+      <h2>Popular Movie</h2>
+      <Button danger size='large' type='link' onClick={() => navigate(`/movie`)}
+        style={{fontSize: '14pt', alignItems: 'center', display: 'flex'}}
+      > See All Movie <ArrowRightOutlined /> </Button>
+    </div>
+    <Swiper
+        slidesPerView={4}
+        spaceBetween={30}
+        freeMode={true}
+        modules={[FreeMode, Pagination]}
+        className="mySwiper"
+      >
       { trend &&
         trend.map((res, index) => {
           return(
+            <SwiperSlide> 
             <Card
               hoverable key={res.id}
-              style={{ borderRadius: 10, width: 'auto', height: 'auto' }}
-              cover={<img alt="example" src={`https://image.tmdb.org/t/p/w500${res.poster_path}`} style={{borderRadius: 10}}
-              onClick={() => navigate(`/Movie/${res.id}`)}/>}
-            >
-              <Meta title={res.title} />
-            </Card>
+              style={{ borderRadius: 10, width: 'auto', height: 'auto', margin: '0.5rem'}}
+              bodyStyle ={{padding: 0}}
+              cover={<img src={`https://image.tmdb.org/t/p/w500${res.poster_path}`} style={{borderRadius: 10}}
+              onClick={() => navigate(`/movie/${res.id}`)}/>}
+            /> 
+            </SwiperSlide>
           )
         })
       }
-    </div>
+    </Swiper>
     </div>
   );
 }

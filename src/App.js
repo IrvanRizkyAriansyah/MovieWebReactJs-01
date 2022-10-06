@@ -4,7 +4,6 @@ import axios from 'axios';
 import React from 'react';
 import { Card } from 'antd';
 import Poster from './screen/Carousel'
-import Movie from './screen/Movie'
 import Navbar from './screen/Nav'
 import Trending from './screen/Trending'
 
@@ -14,7 +13,6 @@ export default function App() {
       <Navbar />
       <Poster />
       <Trending />
-      <Movie />
     </>
   );
 }

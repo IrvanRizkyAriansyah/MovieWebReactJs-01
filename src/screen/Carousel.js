@@ -2,7 +2,9 @@ import '../App';
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import React from 'react';
-import { Carousel, Card } from 'antd';
+import { Carousel, Card, Button } from 'antd';
+import ButtonTrailer from '../component/ButtonTrailer';
+import {SearchOutlined} from '@ant-design/icons'
 
 export default function Poster() {
   const [trend, setTrend] = useState([])
@@ -29,15 +31,6 @@ export default function Poster() {
   useEffect(() => {
     loadTrend()
   }, [])
-  
-  const contentStyle = {
-  height: '100vh',
-  color: '#fff',
-  textAlign: 'left',
-  paddingLeft: '4rem',
-  paddingTop: '40vh',
-  backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(https://image.tmdb.org/t/p/w500${trend.poster_path})`
-  };
 
   return (
     <div>
@@ -47,17 +40,21 @@ export default function Poster() {
           return(
             <div>
               <div style={{
+                display: 'flex',
                 height: '100vh',
                 color: '#fff',
                 textAlign: 'left',
                 paddingLeft: '6rem',
                 paddingRight: '50%',
-                paddingTop: '40vh',
-                backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url(https://image.tmdb.org/t/p/original${res.backdrop_path})`,
+                alignItems: 'center',
+                backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original${res.backdrop_path})`,
                 backgroundSize: 'cover'
               }}>
+              <div>
               <h1 style={{fontWeight: 'bold', color: '#fff'}}>{res.title}</h1>
               <p>{res.overview}</p>
+              <ButtonTrailer title={res.title} />
+              </div>
               </div>
             </div>
           )
