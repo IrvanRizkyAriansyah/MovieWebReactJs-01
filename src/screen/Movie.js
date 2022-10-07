@@ -9,12 +9,11 @@ import Navbar from './Nav'
 
 export default function Movie() {
   const [movie, setMovie] = useState([])
-  const { Meta } = Card;
   const navigate = useNavigate()
   
   const loadMovie = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/discover/movie`, {
+      await axios.get(`${process.env.REACT_APP_BASE_URL}/discover/movie`, {
       params: {
         api_key: process.env.REACT_APP_TMBD_KEY,
       }

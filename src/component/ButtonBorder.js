@@ -1,6 +1,5 @@
 import React from 'react';
 import {Button} from 'antd';
-import {PlayCircleOutlined} from '@ant-design/icons'
 
 const ButtonTrailer = (props) => {
     return (

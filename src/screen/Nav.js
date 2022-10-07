@@ -1,8 +1,6 @@
 import '../App';
-import { useState, useEffect } from "react";
-import axios from 'axios';
 import React from 'react';
-import { Card, Input } from 'antd';
+import { Input } from 'antd';
 import Logo from '../assets/logo.svg';
 import {useNavigate} from 'react-router-dom';
 import ButtonPrimary from '../component/ButtonPrimary';
@@ -16,7 +14,7 @@ export default function Nav() {
   return (
     <div>
     <div className="nav" style={{width: '100%',position: 'absolute', zIndex: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-    <img src={Logo} onClick={() => navigate(`/`)} style={{cursor: "pointer"}}/>
+    <img src={Logo} alt="logo" onClick={() => navigate(`/`)} style={{cursor: "pointer"}}/>
     <Search
       placeholder="What do you want to watch?"
       onSearch={onSearch}
