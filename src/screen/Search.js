@@ -37,7 +37,7 @@ export default function Search() {
   return (
     <>
     <Navbar />
-    <Header query={'"'+query+'"'} />
+    <Header query={'All Movies "'+query+'"'} />
     <div className="container">
     <h2 style={{paddingBottom: '2rem'}}>Search Result "{query}"</h2>
     <div style={{display: 'grid', gridTemplateColumns: 'repeat(4, 15rem)', gap: '2rem', justifyContent: 'center'}}>

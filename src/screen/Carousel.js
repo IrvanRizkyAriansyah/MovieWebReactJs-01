@@ -51,7 +51,7 @@ export default function Poster() {
                 backgroundSize: 'cover'
               }}>
               <div>
-              <h1 style={{fontWeight: 'bold', color: '#fff'}}>{res.title}</h1>
+              <h1 style={{fontWeight: 700, color: '#fff'}}>{res.title}</h1>
               <p>{res.overview}</p>
               <ButtonTrailer title={res.title} />
               </div>

@@ -13,7 +13,7 @@ export default function Header(props) {
             backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(${Teater})`,
             backgroundSize: 'cover'
         }}>
-        <h1 style={{color:'#fff'}}>All Movies {props.query}</h1>
+        <h1 style={{color:'#fff'}}>{props.query}</h1>
 		</div>
 	)
 }

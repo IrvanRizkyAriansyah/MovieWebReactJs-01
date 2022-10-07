@@ -1,11 +1,11 @@
-import '../App';
+import React from 'react'
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import React from 'react';
+import ListGenre from './ListGenre';
 import { Card, Button } from 'antd';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
-import {ArrowRightOutlined} from '@ant-design/icons'
+import {ArrowRightOutlined} from '@ant-design/icons';
 
 // Import Swiper styles
 import "swiper/css";
@@ -15,12 +15,12 @@ import "swiper/css/pagination";
 // import required modules
 import { FreeMode, Pagination } from "swiper";
 
+export default function Genres() {
 
-export default function Trending() {
-  const [trend, setTrend] = useState([])
-  const navigate = useNavigate()
+	const [trend, setTrend] = useState([])
+  	const navigate = useNavigate()
   
-  const loadTrend = async () => {
+  	const loadTrend = async () => {
     try {
       const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/movie/popular`, {
       params: {
@@ -33,21 +33,18 @@ export default function Trending() {
     } catch (error) {
       console.error(error)
     }
-  }
+  	}
+    
 
-  useEffect(() => {
-    loadTrend()
-  }, [])
+  	useEffect(() => {
+    	loadTrend()
+  	}, [])
 
-  return (
-    <div className="container">
-    <div style={{display:'flex', justifyContent: 'space-between', paddingBottom: '2rem'}}>
-      <h2 style={{fontWeight: 600}}>Popular Movie</h2>
-      <Button danger size='large' type='link' onClick={() => navigate(`/movie`)}
-        style={{fontSize: '14pt', alignItems: 'center', display: 'flex'}}
-      > See All Movie <ArrowRightOutlined /> </Button>
-    </div>
-    <Swiper
+	return (
+		<div className="container">
+		<h2 style={{fontWeight: 600, paddingBottom: '2rem'}}>Browse by Category</h2>
+		<ListGenre />
+			<Swiper
         slidesPerView={4}
         spaceBetween={30}
         freeMode={true}
@@ -70,6 +67,6 @@ export default function Trending() {
         })
       }
     </Swiper>
-    </div>
-  );
+		</div>
+	)
 }

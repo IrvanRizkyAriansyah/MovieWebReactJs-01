@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import 'antd/dist/antd.css'
+import 'antd/dist/antd.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Detail from './screen/Detail';
 import Search from './screen/Search';
-import Movie from './screen/Movie'
+import Movie from './screen/Movie';
+import Genre from './screen/Genre';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +21,7 @@ root.render(
     <Route path="/movie/:id" element={<Detail />} />
     <Route path="/:id" element={<Detail />} />
     <Route path="/search/:query" element={<Search />} />
+    <Route path="/genre/:genre" element={<Genre />} />
     </Routes>
     </BrowserRouter>
   </React.StrictMode>

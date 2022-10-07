@@ -6,6 +6,7 @@ import { Card } from 'antd';
 import Poster from './screen/Carousel'
 import Navbar from './screen/Nav'
 import Trending from './screen/Trending'
+import Genre from './component/GenreHome'
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Navbar />
       <Poster />
       <Trending />
+      <Genre />
     </>
   );
 }
