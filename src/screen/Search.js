@@ -9,14 +9,12 @@ import Navbar from './Nav'
 
 export default function Search() {
   const [movie, setMovie] = useState([])
-  const { Meta } = Card;
   const {query} = useParams()
   const navigate = useNavigate()
 
-  console.log(query)
   const loadMovie = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/search/movie`, {
+      await axios.get(`${process.env.REACT_APP_BASE_URL}/search/movie`, {
       params: {
         api_key: process.env.REACT_APP_TMBD_KEY,
         query: `${query}`
@@ -32,10 +30,11 @@ export default function Search() {
 
   useEffect(() => {
     loadMovie()
-  }, [])
+  }, [movie])
 
   return (
     <>
+    {console.log(movie)}
     <Navbar />
     <Header query={'All Movies "'+query+'"'} />
     <div className="container">

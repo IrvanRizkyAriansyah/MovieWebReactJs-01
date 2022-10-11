@@ -4,7 +4,6 @@ import axios from 'axios';
 import React from 'react';
 import { Card } from 'antd';
 import { Swiper, SwiperSlide } from "swiper/react";
-import {ArrowRightOutlined} from '@ant-design/icons'
 
 // Import Swiper styles
 import "swiper/css";
@@ -51,6 +50,9 @@ export default function Credit(props) {
 
   useEffect(() => {
     loadCast()
+  }, [])
+
+  useEffect(() => {
     loadCrew()
   }, [])
 

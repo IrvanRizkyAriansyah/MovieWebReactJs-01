@@ -22,7 +22,7 @@ export default function Trending() {
   
   const loadTrend = async () => {
     try {
-      const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/movie/popular`, {
+      await axios.get(`${process.env.REACT_APP_BASE_URL}/movie/popular`, {
       params: {
         api_key: process.env.REACT_APP_TMBD_KEY
       }
@@ -62,7 +62,7 @@ export default function Trending() {
               hoverable key={res.id}
               style={{ borderRadius: 10, width: 'auto', height: 'auto', margin: '0.5rem'}}
               bodyStyle ={{padding: 0}}
-              cover={<img src={`https://image.tmdb.org/t/p/w500${res.poster_path}`} style={{borderRadius: 10}}
+              cover={<img src={`https://image.tmdb.org/t/p/w500${res.poster_path}`} alt="poster" style={{borderRadius: 10}}
               onClick={() => navigate(`/movie/${res.id}`)}/>}
             /> 
             </SwiperSlide>

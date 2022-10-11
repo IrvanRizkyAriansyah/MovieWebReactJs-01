@@ -2,17 +2,15 @@ import '../App';
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import React from 'react';
-import { Carousel, Card, Button } from 'antd';
+import { Carousel, Card } from 'antd';
 import ButtonTrailer from '../component/ButtonTrailer';
-import {SearchOutlined} from '@ant-design/icons'
 
 export default function Poster() {
   const [trend, setTrend] = useState([])
-  const { Meta } = Card;
   
   const loadTrend = async () => {
     try {
-      const res = axios.get(`${process.env.REACT_APP_BASE_URL}/movie/popular`, {
+      axios.get(`${process.env.REACT_APP_BASE_URL}/movie/popular`, {
       params: {
         api_key: process.env.REACT_APP_TMBD_KEY
       }

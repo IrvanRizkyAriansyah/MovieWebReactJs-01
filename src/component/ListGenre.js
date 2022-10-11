@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css'
 import { useState, useEffect } from "react";
 import axios from 'axios';
-import { Card, Button } from 'antd';
+import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
@@ -16,12 +16,11 @@ import { FreeMode, Pagination } from "swiper";
 
 export default function ListGenre() {
 	const [genre, setGenre] = useState([])
-	const { Meta } = Card;
 	const navigate = useNavigate()
 	  
 	const loadMovie = async () => {
 	try {
-    const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/genre/movie/list`, {
+    await axios.get(`${process.env.REACT_APP_BASE_URL}/genre/movie/list`, {
     params: {
       api_key: process.env.REACT_APP_TMBD_KEY,
     }
@@ -36,7 +35,7 @@ export default function ListGenre() {
 
   	useEffect(() => {
     loadMovie()
-  	}, [])
+  	}, [genre])
 
 	return (
 		<div style={{paddingBottom: '2rem'}}>
