@@ -4,17 +4,19 @@ import { Form, Input, Modal } from 'antd';
 import axios from 'axios';
 import ButtonPrimary from './ButtonPrimary';
 import '../App';
-
+import { MailFilled } from '@ant-design/icons';
+import {useNavigate} from 'react-router-dom';
 
 export default function Login() {
 	const [open, setOpen] = useState(false);
-
+  const navigate = useNavigate()
 
   const onFinish = async (values) => {
   	try {
       const res = await axios.post("http://notflixtv.herokuapp.com/api/v1/users/login",values)
       localStorage.setItem("token",JSON.stringify(res.data.data.token))
       setOpen(false)
+      navigate(`/`)
     } catch (error) {
       console.error(error)
     }
@@ -56,7 +58,7 @@ export default function Login() {
           },
         ]}
       >
-        <Input className="round-input" placeholder="Email Address"/>
+        <Input sufix={<MailFilled />} className="round-input" placeholder="Email Address"/>
     </Form.Item>
     
     <Form.Item
