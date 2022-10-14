@@ -16,7 +16,7 @@ export default function Nav() {
   
   const loadUser = async () => {
     try {
-      await axios.get(`http://notflixtv.herokuapp.com/api/v1/users/activate`, {
+      await axios.get(`https://notflixtv.herokuapp.com/api/v1/users/activate`, {
       params: {
         token : `${token}`
       }
@@ -49,6 +49,7 @@ export default function Nav() {
     {
       user && token !== null ? 
       <h3 style={{color: 'white', fontWeight: 'bold'}}>{user.first_name}</h3> 
+      <img src:{user.image} style={{borderRadius: '50%',height: '5rem'/>
       :
       <>
       <Login />

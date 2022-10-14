@@ -16,7 +16,7 @@ export default function Login() {
   const onFinish = async (values) => {
     console.log(values)
   	try {
-	    const res = await axios.post("http://notflixtv.herokuapp.com/api/v1/users",values);
+	    const res = await axios.post("https://notflixtv.herokuapp.com/api/v1/users",values);
 	    localStorage.setItem("token",JSON.stringify(res.data.data.token))
 	    setOpen(false)
   	} catch(error) {
@@ -46,10 +46,6 @@ export default function Login() {
       form={form}
       name="register"
       onFinish={onFinish}
-      initialValues={{
-        residence: ['zhejiang', 'hangzhou', 'xihu'],
-        prefix: '86',
-      }}
       scrollToFirstError
       >
     	<Form.Item
