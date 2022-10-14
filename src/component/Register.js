@@ -17,7 +17,7 @@ export default function Login() {
     console.log(values)
   	try {
 	    const res = await axios.post("http://notflixtv.herokuapp.com/api/v1/users",values);
-	    console.log(res.data.data)
+	    localStorage.setItem("token",JSON.stringify(res.data.data.token))
 	    setOpen(false)
   	} catch(error) {
   		console.error(error)
