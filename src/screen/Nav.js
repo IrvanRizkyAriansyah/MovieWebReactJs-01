@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom';
 import Login from '../component/Login';
 import Register from '../component/Register';
 import axios from 'axios';
+import ButtonPrimary from '../component/ButtonPrimary';
 
 export default function Nav() {
   const [user, setUser] = useState([])
@@ -31,6 +32,8 @@ export default function Nav() {
   useEffect(() => {
     loadUser()
   }, [])
+  
+  const logout = localStorage.clear();
 
   return (
     <div>
@@ -48,8 +51,11 @@ export default function Nav() {
     <div style={{width: '20%', display: 'flex', justifyContent:'space-between'}}>
     {
       user && token !== null ? 
+      <>
       <h3 style={{color: 'white', fontWeight: 'bold'}}>{user.first_name}</h3> 
-      <img src:{user.image} style={{borderRadius: '50%',height: '5rem'/>
+      <img src={user.image} style={{borderRadius: '50%',height: '5rem'}}/>
+      <ButtonPrimary click={logout} title="Logout" />
+      </>
       :
       <>
       <Login />
