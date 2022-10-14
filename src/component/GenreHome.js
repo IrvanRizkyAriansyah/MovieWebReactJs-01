@@ -26,7 +26,6 @@ export default function Genres() {
         api_key: process.env.REACT_APP_TMBD_KEY
       }
     }).then((res) => {
-      console.log("datas =>", res.data.results)
       setTrend(res.data.results)
     })
     } catch (error) {

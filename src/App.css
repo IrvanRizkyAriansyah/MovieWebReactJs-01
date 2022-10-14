@@ -9,3 +9,11 @@
 .nav {
   padding: 2rem 6rem;
 }
+
+.round-input {
+  border-radius: 5rem;
+}
+
+.ant-input:hover {
+  border-color: danger;
+}

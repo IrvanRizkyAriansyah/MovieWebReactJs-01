@@ -20,7 +20,6 @@ export default function Search() {
         query: `${query}`
       }
     }).then((res) => {
-      console.log("datas =>", res.data)
       setMovie(res.data.results)
     })
     } catch (error) {

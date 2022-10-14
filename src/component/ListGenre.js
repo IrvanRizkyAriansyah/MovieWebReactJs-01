@@ -25,7 +25,6 @@ export default function ListGenre() {
       api_key: process.env.REACT_APP_TMBD_KEY,
     }
     }).then((res) => {
-      console.log("genre =>", res.data.genres)
       setGenre(res.data.genres)
     })
     } catch (error) {

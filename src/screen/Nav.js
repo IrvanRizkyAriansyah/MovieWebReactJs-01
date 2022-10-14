@@ -3,8 +3,8 @@ import React from 'react';
 import { Input } from 'antd';
 import Logo from '../assets/logo.svg';
 import {useNavigate} from 'react-router-dom';
-import ButtonPrimary from '../component/ButtonPrimary';
-import ButtonBorder from '../component/ButtonBorder'
+import Login from '../component/Login';
+import Register from '../component/Register';
 
 export default function Nav() {
   const navigate = useNavigate()
@@ -19,12 +19,14 @@ export default function Nav() {
       placeholder="What do you want to watch?"
       onSearch={onSearch}
       style={{
-        width: '50%'
+        width: '50%',
+        justifyContent: 'center'
       }}
     />
+    
     <div style={{width: '20%', display: 'flex', justifyContent:'space-between'}}>
-      <ButtonBorder title="Login" />
-      <ButtonPrimary title="Register" />
+      <Login />
+      <Register />
     </div>
     </div>
     </div>
