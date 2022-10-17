@@ -1,6 +1,6 @@
 import '../App';
 import React, {useState, useEffect} from 'react';
-import { Input, Col, Row } from 'antd';
+import { Input } from 'antd';
 import Logo from '../assets/logo.svg';
 import {useNavigate} from 'react-router-dom';
 import Login from '../component/Login';
@@ -17,7 +17,7 @@ export default function Nav() {
   
   const loadUser = async() => {
     try {
-      await axios.get(`http://notflixtv.herokuapp.com/api/v1/users/activate`, {
+      await axios.get(`https://notflixtv.herokuapp.com/api/v1/users/activate`, {
       params: {
         token : `${token}`
       }

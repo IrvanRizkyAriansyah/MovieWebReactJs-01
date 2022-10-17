@@ -5,7 +5,6 @@ import axios from 'axios';
 import ButtonPrimary from './ButtonPrimary';
 import '../App';
 import { MailOutlined } from '@ant-design/icons';
-import {useNavigate} from 'react-router-dom';
 
 export default function Login() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,7 +15,7 @@ export default function Login() {
 
   const onFinish = async (values) => {
   	try {
-      const res = await axios.post("http://notflixtv.herokuapp.com/api/v1/users/login",values)
+      const res = await axios.post("https://notflixtv.herokuapp.com/api/v1/users/login",values)
       localStorage.setItem("token",JSON.stringify(res.data.data.token))
       console.log(res.data.data.token)
       setIsModalOpen(false);
