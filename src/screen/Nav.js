@@ -1,6 +1,6 @@
 import '../App';
 import React, {useState, useEffect} from 'react';
-import { Input } from 'antd';
+import { Input, Col, Row } from 'antd';
 import Logo from '../assets/logo.svg';
 import {useNavigate} from 'react-router-dom';
 import Login from '../component/Login';
@@ -15,9 +15,9 @@ export default function Nav() {
   const onSearch = (query) => navigate(`/search/${query}`);
   const token =  JSON.parse(localStorage.getItem('token'))
   
-  const loadUser = async () => {
+  const loadUser = async() => {
     try {
-      await axios.get(`https://notflixtv.herokuapp.com/api/v1/users/activate`, {
+      await axios.get(`http://notflixtv.herokuapp.com/api/v1/users/activate`, {
       params: {
         token : `${token}`
       }
@@ -31,38 +31,38 @@ export default function Nav() {
 
   useEffect(() => {
     loadUser()
-  }, [])
-  
-  const logout = localStorage.clear();
+  }, [user])
 
   return (
-    <div>
-    <div className="nav" style={{width: '100%',position: 'absolute', zIndex: 3, display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+    <div className="nav" style={{width:'100%', position: 'absolute', zIndex: 3}}>
+    <div style={{width: '25%'}}>
     <img src={Logo} alt="logo" onClick={() => navigate(`/`)} style={{cursor: "pointer"}}/>
+    </div>
+    <div style={{width: '50%'}}>
     <Search
       placeholder="What do you want to watch?"
       onSearch={onSearch}
       style={{
-        width: '50%',
+        borderRadius: '50%',
         justifyContent: 'center'
       }}
     />
+    </div>
     
-    <div style={{width: '20%', display: 'flex', justifyContent:'space-between'}}>
+    <div style={{width: '25%', paddingLeft: '3rem'}}>
     {
-      user && token !== null ? 
-      <>
-      <h3 style={{color: 'white', fontWeight: 'bold'}}>{user.first_name}</h3> 
-      <img src={user.image} style={{borderRadius: '50%',height: '5rem'}}/>
-      <ButtonPrimary click={logout} title="Logout" />
-      </>
-      :
-      <>
+      token !== null ? 
+      <div style={{display: 'flex', justifyContent:'space-between'}}>
+      <h3 style={{color: 'white', fontWeight: 'bold', marginBottom: 0, display: 'flex', alignItems: 'center'}}>{user.first_name}</h3> 
+      <img src={user.image} style={{borderRadius: '50%',height: '2rem',marginTop: 5 }}/>
+      <ButtonPrimary title="Logout" click={()=>localStorage.clear()} />
+      </div>
+      : 
+      <div style={{display: 'flex', justifyContent:'space-between'}}>
       <Login />
       <Register />
-      </>
+      </div>
     }
-    </div>
     </div>
     </div>
   );

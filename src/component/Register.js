@@ -6,7 +6,7 @@ import { Modal,
   } from 'antd';
 import ButtonPrimary from './ButtonPrimary';
 import axios from 'axios';
-
+import { MailOutlined, UserOutlined } from '@ant-design/icons';
 
 export default function Login() {
 	const [open, setOpen] = useState(false);
@@ -16,7 +16,7 @@ export default function Login() {
   const onFinish = async (values) => {
     console.log(values)
   	try {
-	    const res = await axios.post("https://notflixtv.herokuapp.com/api/v1/users",values);
+	    const res = await axios.post("http://notflixtv.herokuapp.com/api/v1/users",values);
 	    localStorage.setItem("token",JSON.stringify(res.data.data.token))
 	    setOpen(false)
   	} catch(error) {
@@ -58,7 +58,7 @@ export default function Login() {
           },
         ]}
       >
-      <Input className="round-input" placeholder="First Name"/>
+      <Input className="round-input" suffix={<UserOutlined />} placeholder="First Name"/>
       </Form.Item>
 
       <Form.Item
@@ -71,7 +71,7 @@ export default function Login() {
           },
         ]}
       >
-      <Input className="round-input" placeholder="Last Name"/>
+      <Input className="round-input" suffix={<UserOutlined />} placeholder="Last Name"/>
       </Form.Item>
 
       <Form.Item
@@ -87,7 +87,7 @@ export default function Login() {
           },
         ]}
       >
-        <Input className="round-input" placeholder="Email Address"/>
+        <Input className="round-input" suffix={<MailOutlined />} placeholder="Email Address"/>
       </Form.Item>
 
       <Form.Item

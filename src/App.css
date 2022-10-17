@@ -8,12 +8,13 @@
 
 .nav {
   padding: 2rem 6rem;
+  width: '100%';
+  display: 'flex';
+  justify-content: 'space-between';
+  align-items: 'center'
 }
 
 .round-input {
   border-radius: 5rem;
 }
 
-.ant-input:hover {
-  border-color: danger;
-}
