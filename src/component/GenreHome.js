@@ -52,7 +52,7 @@ export default function Genres() {
       { trend &&
         trend.map((res, index) => {
           return(
-            <SwiperSlide> 
+            <SwiperSlide key={res.id}> 
             <Card
               hoverable key={res.id}
               style={{ borderRadius: 10, width: 'auto', height: 'auto', margin: '0.5rem'}}

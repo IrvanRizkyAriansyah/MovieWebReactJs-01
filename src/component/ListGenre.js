@@ -45,9 +45,9 @@ export default function ListGenre() {
         modules={[FreeMode, Pagination]}
         className="mySwiper"
       	>
-		{ genre.map((res, id) => {
+		{ genre.map((res, index) => {
           return(
-            <SwiperSlide> 
+            <SwiperSlide key={res.id}> 
             <Button danger shape="round" size={'large'} ghost={true} style = {{width: '9rem'}}
             onClick={() => navigate(`/genre/${res.name}`)}
 			> {res.name} </Button> 

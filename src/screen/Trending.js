@@ -57,9 +57,9 @@ export default function Trending() {
       { trend &&
         trend.map((res, index) => {
           return(
-            <SwiperSlide> 
+            <SwiperSlide key={res.id}> 
             <Card
-              hoverable key={res.id}
+              hoverable
               style={{ borderRadius: 10, width: 'auto', height: 'auto', margin: '0.5rem'}}
               bodyStyle ={{padding: 0}}
               cover={<img src={`https://image.tmdb.org/t/p/w500${res.poster_path}`} alt="poster" style={{borderRadius: 10}}

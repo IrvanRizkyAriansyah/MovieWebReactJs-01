@@ -50,11 +50,11 @@ export default function Credit(props) {
 
   useEffect(() => {
     loadCast()
-  }, [])
+  }, [cast])
 
   useEffect(() => {
     loadCrew()
-  }, [])
+  }, [crew])
 
   return (
     <div className="container">
@@ -76,7 +76,7 @@ export default function Credit(props) {
               hoverable key={res.id}
               style={{ borderRadius: 10, width: 'auto', height: 'auto', margin: '0.5rem'}}
               bodyStyle ={{padding: '1rem'}}
-              cover={<img src={`https://image.tmdb.org/t/p/w500${res.profile_path}`} style={{borderRadius: 10}} />}
+              cover={<img src={`https://image.tmdb.org/t/p/w500${res.profile_path}`} alt={res.name} style={{borderRadius: 10}} />}
             >
               <Meta title={res.name} description={res.character} />
             </Card>
@@ -94,7 +94,7 @@ export default function Credit(props) {
               hoverable key={res.id}
               style={{ borderRadius: 10, width: 'auto', height: 'auto', margin: '0.5rem'}}
               bodyStyle ={{padding: '1rem'}}
-              cover={<img src={`https://image.tmdb.org/t/p/w500${res.profile_path}`} style={{borderRadius: 10}} />}
+              cover={<img src={`https://image.tmdb.org/t/p/w500${res.profile_path}`} alt={res.name} style={{borderRadius: 10}} />}
             >
               <Meta title={res.name} description={res.job} />
             </Card>

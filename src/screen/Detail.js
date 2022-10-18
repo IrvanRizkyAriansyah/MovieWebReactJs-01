@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from 'axios';
 import React from 'react';
 import {useParams} from 'react-router-dom';
-import { Card, Button } from 'antd';
+import { Card } from 'antd';
 import Credit from './Credit';
 import Navbar from './Nav';
 import ButtonTrailer from '../component/ButtonTrailer';
@@ -15,7 +15,6 @@ export default function Detail() {
   const [genre, setGenre] = useState([])
   const [rating, setRating] = useState(null)
   const {id} = useParams()
-  const { Meta } = Card
 
   const loadDetail = async () => {
     try {
@@ -36,7 +35,7 @@ export default function Detail() {
 
   useEffect(() => {
     loadDetail()
-  }, [])
+  }, [detail])
 
   return (
     <>

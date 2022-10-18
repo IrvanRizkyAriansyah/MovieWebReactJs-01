@@ -48,7 +48,7 @@ export default function Search() {
               hoverable key={res.id}
               style={{ borderRadius: 10, width: 'auto', height: 'auto' }}
               bodyStyle={{ padding: 0, objectFit: 'cover' }}
-              cover={<img alt="example" src={`https://image.tmdb.org/t/p/w500${res.poster_path}`} alt={res.title} style={{borderRadius: 10}}
+              cover={<img src={`https://image.tmdb.org/t/p/w500${res.poster_path}`} alt={res.title} style={{borderRadius: 10}}
               />}
             onClick={() => navigate(`/movie/${res.id}`)}
             />

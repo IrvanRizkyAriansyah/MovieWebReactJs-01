@@ -18,3 +18,13 @@
   border-radius: 5rem;
 }
 
+.ButtonLoginGoogle {
+  height: 40px !important;
+  border-radius: 5rem !important;
+}
+
+.ButtonLoginGoogle div {
+  height: 40px !important;
+  border-radius: 5rem !important;
+  alignItems: 'center' !important;
+}

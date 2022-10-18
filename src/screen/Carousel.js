@@ -2,7 +2,7 @@ import '../App';
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import React from 'react';
-import { Carousel, Card } from 'antd';
+import { Carousel } from 'antd';
 import ButtonTrailer from '../component/ButtonTrailer';
 
 export default function Poster() {
@@ -16,6 +16,7 @@ export default function Poster() {
       }
     }).then((res) => {
       let data = (res.data.results)
+      console.log(res.data.results)
       if(data.length >= 3) { 
         data.splice(3);
         setTrend(data)
@@ -36,7 +37,7 @@ export default function Poster() {
       {
         trend.map((res, index) => {
           return(
-            <div>
+            <div key={res.id}>
               <div style={{
                 display: 'flex',
                 height: '100vh',
