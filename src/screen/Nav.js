@@ -9,17 +9,16 @@ import ButtonPrimary from '../component/ButtonPrimary';
 
 export default function Nav() {
   // const [user, setUser] = useState([])
-  const [userGoogle, setUserGoogle] = useState([])
+  const [user, setUser] = useState([])
   const navigate = useNavigate()
   const { Search } = Input;
   const onSearch = (query) => navigate(`/search/${query}`);
   const token =  JSON.parse(localStorage.getItem('token'));
   const profile = JSON.parse(localStorage.getItem('user'));
   
-  console.log(profile)
   const loadUser = () => {
     try {
-      setUserGoogle(profile)
+      setUser(profile)
     } catch (error) {
       console.error(error)
     }
@@ -34,28 +33,29 @@ export default function Nav() {
     <div style={{width: '25%'}}>
     <img src={Logo} alt="logo" onClick={() => navigate(`/`)} style={{cursor: "pointer"}}/>
     </div>
-    <div style={{width: '50%'}}>
+    <div className="search" style={{width: '50%'}}>
     <Search
       placeholder="What do you want to watch?"
       onSearch={onSearch}
       style={{
-        borderRadius: '50%',
         justifyContent: 'center'
       }}
     />
     </div>
     
-    <div style={{width: '25%', paddingLeft: '3rem'}}>
+    <div style={{width: '25%'}}>
     {
       profile !== null && token !== null ? 
-      <div style={{display: 'flex', justifyContent:'space-between', alignItems: 'center'}}>
-      <h3 style={{color: 'white', fontWeight: 'bold', marginBottom: 0, display: 'flex', alignItems: 'center'}}>{userGoogle.givenName}</h3> 
-      <img src={userGoogle.imageUrl} alt="" style={{borderRadius: '50%',height: '2.5rem',marginTop: 5 }}/>
+      <div style={{display: 'flex', justifyContent:'flex-end', alignItems: 'center'}}>
+      <h3 style={{color: 'white', fontWeight: 'bold', marginBottom: 0, marginRight: '1rem', display: 'flex', alignItems: 'center'}}>{user.givenName || user.first_name}</h3> 
+      <img src={user.imageUrl || user.image} alt="" style={{borderRadius: '50%',height: '2.5rem',marginTop: 5, marginRight: '1rem'}} />
       <ButtonPrimary title="Logout" click={()=>window.location.reload(localStorage.clear())} />
       </div>
       : 
-      <div style={{display: 'flex', justifyContent:'space-between'}}>
+      <div style={{display: 'flex', justifyContent:'flex-end'}}>
+      <div style={{marginRight: '1rem'}}>
       <Login />
+      </div>
       <Register />
       </div>
     }

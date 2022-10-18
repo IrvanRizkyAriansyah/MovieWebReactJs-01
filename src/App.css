@@ -28,3 +28,7 @@
   border-radius: 5rem !important;
   alignItems: 'center' !important;
 }
+
+.search .ant-input-group-wrapper .ant-input-search {
+  border-radius: 5rem !important;
+}

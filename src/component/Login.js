@@ -33,13 +33,16 @@ export default function Login() {
   const showModal = () => {
     setIsModalOpen(true);
   };
+  
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
 
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
   	try {
-        const res = axios.post("https://notflixtv.herokuapp.com/api/v1/users/login",values)
+        const res = await axios.post("https://notflixtv.herokuapp.com/api/v1/users/login",values)
         localStorage.setItem("token",JSON.stringify(res.data.data.token))
-        console.log(res.data.data.token)
-        console.log(res.data.data)
+        localStorage.setItem("user",JSON.stringify(res.data.data))
         setIsModalOpen(false);
         window.location.reload(1);
     } catch (error) {
@@ -50,7 +53,7 @@ export default function Login() {
 	return (
 		<div>
       <ButtonBorder title="Login" click={showModal} />
-	    <Modal title="Login In to Your Account" open={isModalOpen} footer={null}>
+	    <Modal title="Login In to Your Account" open={isModalOpen} onCancel={handleCancel} footer={null}>
         <Form
           name="normal_login"
           className="login-form"
@@ -100,7 +103,6 @@ export default function Login() {
           />
           </div>
         </Form>
-        
 	    </Modal>
 		</div>
 	)
