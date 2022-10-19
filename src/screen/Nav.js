@@ -47,7 +47,7 @@ export default function Nav() {
     {
       profile !== null && token !== null ? 
       <div style={{display: 'flex', justifyContent:'flex-end', alignItems: 'center'}}>
-      <h3 style={{color: 'white', fontWeight: 'bold', marginBottom: 0, marginRight: '1rem', display: 'flex', alignItems: 'center'}}>{user.givenName || user.first_name}</h3> 
+      <h4 style={{color: 'white', fontWeight: 'bold', marginBottom: 0, marginRight: '1rem', display: 'flex', alignItems: 'center'}}>{user.givenName || user.first_name}</h4> 
       <img src={user.imageUrl || user.image} alt="" style={{borderRadius: '50%',height: '2.5rem',marginTop: 5, marginRight: '1rem'}} />
       <ButtonPrimary title="Logout" click={()=>window.location.reload(localStorage.clear())} />
       </div>

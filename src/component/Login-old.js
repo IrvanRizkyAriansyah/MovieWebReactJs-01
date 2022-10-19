@@ -1,14 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ButtonBorder from './ButtonBorder'
 import { Form, Input, Modal } from 'antd';
 import axios from 'axios';
 import ButtonPrimary from './ButtonPrimary';
 import '../App';
 import { MailOutlined } from '@ant-design/icons';
-import { GoogleLogin } from '@react-oauth/google';
+import { GoogleLogin } from 'react-google-login';
+import { gapi } from 'gapi-script';
 
 export default function Login() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const clientId = "709708727147-mqp4g2eh3p1odu1g4r9pou9j21ppjr6q.apps.googleusercontent.com"
+	
+	useEffect(() => {
+   const initClient = () => {
+         gapi.client.init({
+         clientId: clientId,
+         scope: ''
+       });
+    };
+    gapi.load('client:auth2', initClient);
+  });
+	
+	const responseGoogle = (response) => {
+    console.log(response);
+    localStorage.setItem("token",JSON.stringify(response.accessToken))
+    localStorage.setItem("user",JSON.stringify(response.profileObj))
+    setIsModalOpen(false);
+    window.location.reload(1);
+  }
   
   const showModal = () => {
     setIsModalOpen(true);
@@ -74,16 +94,12 @@ export default function Login() {
           <div style={{width: '40%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
           <ButtonPrimary type="submit" title="Login"/>
           <GoogleLogin
-            onSuccess={credentialResponse => {
-              console.log(credentialResponse);
-              localStorage.setItem("token", JSON.stringify(credentialResponse.credential));
-              localStorage.setItem("user", JSON.stringify({first_name: 'Google User', image: ''}));
-              setIsModalOpen(false);
-              window.location.reload(1);
-            }}
-            onError={() => {
-              console.log('Login Failed');
-            }}
+            clientId={clientId}
+            buttonText="Login"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}
+            className="ButtonLoginGoogle"
           />
           </div>
         </Form>
