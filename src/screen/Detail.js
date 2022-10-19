@@ -54,7 +54,7 @@ export default function Detail() {
         backgroundSize: 'cover'
       }}>
     <div>
-    <h1 style={{fontWeight: 'bold', color: '#fff'}}>{detail.original_title}</h1>
+    <h1 style={{fontWeight: 'bold', color: '#fff'}}>{detail.title}</h1>
     <div style={{display: 'flex'}}>
     {genre.map((res, index) =>{
         return (
