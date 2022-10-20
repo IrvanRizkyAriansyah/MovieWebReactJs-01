@@ -18,7 +18,6 @@ export default function Movie() {
         api_key: process.env.REACT_APP_TMBD_KEY,
       }
     }).then((res) => {
-      console.log("datas =>", res.data.results)
       setMovie(res.data.results)
     })
     } catch (error) {

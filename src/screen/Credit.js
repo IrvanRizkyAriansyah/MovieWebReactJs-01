@@ -25,7 +25,6 @@ export default function Credit(props) {
         api_key: process.env.REACT_APP_TMBD_KEY
       }
       }).then((res) => {
-        console.log(res.data.cast)
         setCast(res.data.cast.slice(0,5))
       })
     } catch (error) {

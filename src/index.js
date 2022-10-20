@@ -10,9 +10,11 @@ import Detail from './screen/Detail';
 import Search from './screen/Search';
 import Movie from './screen/Movie';
 import Genre from './screen/Genre';
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  <GoogleOAuthProvider clientId="709708727147-mqp4g2eh3p1odu1g4r9pou9j21ppjr6q.apps.googleusercontent.com">
   <React.StrictMode>
     <BrowserRouter>
     <Routes>
@@ -25,6 +27,7 @@ root.render(
     </Routes>
     </BrowserRouter>
   </React.StrictMode>
+  </GoogleOAuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

@@ -23,7 +23,6 @@ export default function Detail() {
         api_key: process.env.REACT_APP_TMBD_KEY
       }
       }).then((res) => {
-        console.log(res.data)
         setDetail(res.data)
         setGenre(res.data.genres)
         setRating(res.data.vote_average.toFixed(1))

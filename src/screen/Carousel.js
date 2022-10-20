@@ -16,7 +16,6 @@ export default function Poster() {
       }
     }).then((res) => {
       let data = (res.data.results)
-      console.log(res.data.results)
       if(data.length >= 3) { 
         data.splice(3);
         setTrend(data)

@@ -71,10 +71,11 @@ export default function Login() {
             />
           </Form.Item>
     
-          <div style={{width: '40%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+          <div style={{width: '62%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
           <ButtonPrimary type="submit" title="Login"/>
           <GoogleLogin
-            onSuccess={credentialResponse => {
+              shape={'pill'}
+              onSuccess={credentialResponse => {
               console.log(credentialResponse);
               localStorage.setItem("token", JSON.stringify(credentialResponse.credential));
               localStorage.setItem("user", JSON.stringify({first_name: 'Google User', image: ''}));

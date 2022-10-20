@@ -27,7 +27,6 @@ export default function Trending() {
         api_key: process.env.REACT_APP_TMBD_KEY
       }
     }).then((res) => {
-      console.log("datas =>", res.data.results)
       setTrend(res.data.results)
     })
     } catch (error) {
